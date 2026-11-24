@@ -1,0 +1,19 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      N8N_HOST: n8n.mpempreende.com.br
+      N8N_PROTOCOL: https
+      N8N_EDITOR_BASE_URL: https://n8n.mpempreende.com.br/
+      WEBHOOK_URL: https://n8n.mpempreende.com.br/
+      N8N_PROXY_HOPS: "1"
+      GENERIC_TIMEZONE: America/Bahia
+      TZ: America/Bahia
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:
